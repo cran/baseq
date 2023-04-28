@@ -4,10 +4,13 @@
 \alias{clean_DNA_file}
 \title{Clean DNA file}
 \usage{
-clean_DNA_file(input_file)
+clean_DNA_file(input_file, output_dir = "")
 }
 \arguments{
 \item{input_file}{The name of the input multi FASTA file.}
+
+\item{output_dir}{The directory where the output file will be saved. If not given,
+the output file will be saved in the same directory as the input file.}
 }
 \value{
 A character string specifying the path to the output FASTA file.
@@ -19,6 +22,15 @@ file name is generated from the input file name with the suffix '_clean.fasta'.
 }
 \examples{
 sample_file_path_three <- system.file("extdata", "sample2_fa.fasta", package = "baseq")
-clean_DNA_file(sample_file_path_three)
+tempdir <- tempdir()
+temp_file_path <- file.path(tempdir, basename(sample_file_path_three))
+file.copy(sample_file_path_three, temp_file_path, overwrite = TRUE)
+clean_DNA_file(temp_file_path, output_dir = tempdir)
+
+# Write to working directory
+# clean_DNA_file(file_path)
+
+# Write to custom directory
+# clean_DNA_file(file_path, output_dir = "/path/to/directory/")
 
 }

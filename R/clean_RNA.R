@@ -5,19 +5,33 @@
 #' file name is generated from the input file name with the suffix '_clean.fasta'.
 #'
 #' @param input_file The name of the input multi FASTA file.
+#' @param output_dir The directory where the output file will be saved. If not given,
+#' the output file will be saved in the same directory as the input file.
 #' @return A character string specifying the path to the output FASTA file.
 #'
 #' @examples
 #' sample_file_path_three <- system.file("extdata", "sample2_fa.fasta", package = "baseq")
-#' clean_RNA_file(sample_file_path_three)
+#' tempdir <- tempdir()
+#' temp_file_path <- file.path(tempdir, basename(sample_file_path_three))
+#' file.copy(sample_file_path_three, temp_file_path, overwrite = TRUE)
+#' clean_RNA_file(temp_file_path, output_dir = tempdir)
+#'
+#' # Write to working directory
+#' # clean_RNA_file(file_path)
+#'
+#' # Write to custom directory
+#' # clean_RNA_file(file_path, output_dir = "/path/to/directory/")
 #'
 #' @export
-clean_RNA_file <- function(input_file) {
+clean_RNA_file <- function(input_file, output_dir = "") {
   # Open input file
   con <- file(input_file, "r")
 
   # Initialize variables
-  output_file <- paste0(substring(input_file, 1, nchar(input_file) - 6), "_clean.fasta")
+  if (output_dir == "") {
+    output_dir <- dirname(input_file)
+  }
+  output_file <- file.path(output_dir, paste0(basename(tools::file_path_sans_ext(input_file)), "_clean.fasta"))
   seq_list <- list()
   seq_name <- NULL
   seq_string <- NULL
@@ -47,7 +61,7 @@ clean_RNA_file <- function(input_file) {
   # Clean sequences
   clean_seq_list <- lapply(seq_list, function(seq) {
     seq <- toupper(seq)
-    gsub("[^ACGU]", "", seq)
+    gsub("[^AUGC]", "", seq)
   })
 
   # Write cleaned sequences to output file
@@ -62,4 +76,6 @@ clean_RNA_file <- function(input_file) {
 
   # Print message
   cat(paste0("Cleaned sequences written to file '", output_file, "'.\n"))
+
+  return(output_file)
 }

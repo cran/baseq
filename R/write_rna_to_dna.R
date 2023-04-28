@@ -1,8 +1,8 @@
-#' Clean DNA file
+#' Convert RNA file to DNA file
 #'
-#' This function reads a multi FASTA file containing DNA sequences, removes any characters other
-#' than A, T, G, and C, and writes the cleaned sequences to a new multi FASTA file. The output
-#' file name is generated from the input file name with the suffix '_clean.fasta'.
+#' This function reads a multi FASTA file containing RNA sequences, converts each RNA sequence to DNA sequence,
+#' and writes the DNA sequences to a new multi FASTA file. The output file name is generated from the input file
+#' name with the suffix '_rna.fasta'.
 #'
 #' @param input_file The name of the input multi FASTA file.
 #' @param output_dir The directory where the output file will be saved. If not given,
@@ -10,20 +10,20 @@
 #' @return A character string specifying the path to the output FASTA file.
 #'
 #' @examples
-#' sample_file_path_three <- system.file("extdata", "sample2_fa.fasta", package = "baseq")
+#' sample_file_path <- system.file("extdata", "sample3_fa.fasta", package = "baseq")
 #' tempdir <- tempdir()
-#' temp_file_path <- file.path(tempdir, basename(sample_file_path_three))
-#' file.copy(sample_file_path_three, temp_file_path, overwrite = TRUE)
-#' clean_DNA_file(temp_file_path, output_dir = tempdir)
+#' temp_file_path <- file.path(tempdir, basename(sample_file_path))
+#' file.copy(sample_file_path, temp_file_path, overwrite = TRUE)
+#' write.rna_to_dna(temp_file_path, output_dir = tempdir)
 #'
 #' # Write to working directory
-#' # clean_DNA_file(file_path)
+#' # write.rna_to_dna(file_path)
 #'
 #' # Write to custom directory
-#' # clean_DNA_file(file_path, output_dir = "/path/to/directory/")
+#' # write.rna_to_dna(file_path, output_dir = "/path/to/directory/")
 #'
 #' @export
-clean_DNA_file <- function(input_file, output_dir = "") {
+write.rna_to_dna <- function(input_file, output_dir = "") {
   # Open input file
   con <- file(input_file, "r")
 
@@ -31,7 +31,7 @@ clean_DNA_file <- function(input_file, output_dir = "") {
   if (output_dir == "") {
     output_dir <- dirname(input_file)
   }
-  output_file <- file.path(output_dir, paste0(basename(tools::file_path_sans_ext(input_file)), "_clean.fasta"))
+  output_file <- file.path(output_dir, paste0(basename(tools::file_path_sans_ext(input_file)), "_dna.fasta"))
   seq_list <- list()
   seq_name <- NULL
   seq_string <- NULL
@@ -56,26 +56,25 @@ clean_DNA_file <- function(input_file, output_dir = "") {
   seq_list[[seq_name]] <- seq_string
 
   # Close input file
-  close(con)
+  close.connection(con)
 
-  # Clean sequences
-  clean_seq_list <- lapply(seq_list, function(seq) {
-    seq <- toupper(seq)
-    gsub("[^ATGC]", "", seq)
+  # Convert DNA sequences to RNA sequences
+  dna_seq_list <- lapply(seq_list, function(seq) {
+    gsub("U", "T", seq)
   })
 
-  # Write cleaned sequences to output file
+  # Write RNA sequences to output file
   con <- file(output_file, "w")
-  for (i in 1:length(clean_seq_list)) {
-    seq_name <- names(clean_seq_list)[i]
-    seq_string <- clean_seq_list[[i]]
+  for (i in 1:length(dna_seq_list)) {
+    seq_name <- names(dna_seq_list)[i]
+    seq_string <- dna_seq_list[[i]]
     writeLines(paste0(">", seq_name), con)
     writeLines(seq_string, con)
   }
   close.connection(con)
 
   # Print message
-  cat(paste0("Cleaned sequences written to file '", output_file, "'.\n"))
+  cat(paste0("DNA sequences written to file '", output_file, "'.\n"))
 
   return(output_file)
 }

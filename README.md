@@ -13,7 +13,7 @@
 
 Developed by Ambu Vijayan and Dr. J. Sreekumar
 
-Version 0.1.1
+Version 0.1.2
 
 Commands :
 
@@ -64,6 +64,10 @@ Commands :
 * read.fastq_to_list()
 
 **Writers :**
+
+* write.dna_to_rna()
+
+* write.rna_to_dna()
 
 * write.df_to_fasta()
 
@@ -123,6 +127,12 @@ The read.fastq_to_df function reads in a Fastq file and stores it as a dataframe
 </p>
 <p align="justify">
 The read.fastq_to_list function reads a Fastq file and stores it as a list with three columns: Header, Sequence, and QualityScore. The function takes a character string specifying the path to the Fastq file to be read and returns a list with the aforementioned columns. The function loops over the Fastq file, reads in four lines at a time, removes the @ symbol from the header, and adds the sequence to the list with the header as the list element name. Finally, the function closes the file, assigns the list to the environment, and prints a message indicating successful assignment.
+</p>
+<p align="justify">
+The write.dna_to_rna function takes an input multi FASTA file containing DNA sequences, converts each DNA sequence to RNA sequence, and writes the RNA sequences to a new multi FASTA file with the suffix _rna.fasta.
+</p>
+<p align="justify">
+The write.rna_to_dna function takes an input multi FASTA file containing RNA sequences, converts each RNA sequence to DNA sequence, and writes the DNA sequences to a new multi FASTA file with the suffix _dna.fasta.
 </p>
 <p align="justify">
 The write.df_to_fasta function is used to write a data frame containing FASTA records to a file in the FASTA format. The data frame is assumed to have two columns, "Header" and "Sequence", which represent the header and sequence lines of each FASTA record, respectively. The output file is named after the input data frame with the ".fasta" extension, and is written to the working directory. This function does not return any value but writes a FASTA file to the working directory
