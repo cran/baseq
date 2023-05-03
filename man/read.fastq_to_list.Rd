@@ -20,8 +20,6 @@ This function reads a Fastq file and stores it as a list with three columns: Hea
 # Read in sequences from a FASTQ file
 
 sample_file_path_two <- system.file("extdata", "sample_fq.fastq", package = "baseq")
-
 read.fastq_to_list(sample_file_path_two)
-
 }
 }

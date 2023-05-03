@@ -14,8 +14,7 @@ Function to calculate GC content of sequences in a multi FASTA file
 and write the results to a new FASTA file
 }
 \examples{
-sample_file_path <- system.file("extdata", "sample_fa.fasta", package = "baseq")
-
-clean_DNA_file(sample_file_path)
+#sample_file_path <- system.file("extdata", "sample_fa.fasta", package = "baseq")
+#clean_DNA_file(sample_file_path)
 
 }

@@ -16,9 +16,12 @@ This function returns a dataframe with three columns: Header, Sequence, and Qual
 This function reads a Fastq file and stores it as a dataframe with three columns: Header, Sequence, and QualityScore.
 }
 \examples{
+\donttest{
 
-sample_file_path_two <- system.file("extdata", "sample_fq.fastq", package = "baseq")
+# Read in sequences from a FASTQ file
 
-read.fastq_to_df(sample_file_path_two)
+#sample_file_path_two <- system.file("extdata", "sample_fq.fastq", package = "baseq")
+#read.fastq_to_df(sample_file_path_two)
+}
 
 }

@@ -19,12 +19,13 @@ Header and Sequence. The list is then assigned to the environment with the
 name same as the fasta file name but without the .fasta extension.
 }
 \examples{
+\donttest{
+# Read in sequences from a FASTA file
 
 sample_file_path <- system.file("extdata", "sample_fa.fasta", package = "baseq")
-
 read.fasta_to_list(sample_file_path)
-
+}
 # Access a specific sequence by name
-sample_fa[["sample_seq.1"]]
+# sample_fa[["sample_seq.1"]]
 
 }

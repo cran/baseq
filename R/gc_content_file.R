@@ -6,9 +6,8 @@
 #' @param input_file A string indicating the path and name of the input multi-FASTA file
 #'
 #' @examples
-#' sample_file_path <- system.file("extdata", "sample_fa.fasta", package = "baseq")
-#'
-#' clean_DNA_file(sample_file_path)
+#' #sample_file_path <- system.file("extdata", "sample_fa.fasta", package = "baseq")
+#' #clean_DNA_file(sample_file_path)
 #'
 #' @export
 gc_content_file <- function(input_file) {

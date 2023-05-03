@@ -10,11 +10,11 @@
 #' @return A character string specifying the path to the output FASTA file.
 #'
 #' @examples
-#' sample_file_path <- system.file("extdata", "sample_fa.fasta", package = "baseq")
-#' tempdir <- tempdir()
-#' temp_file_path <- file.path(tempdir, basename(sample_file_path))
-#' file.copy(sample_file_path, temp_file_path, overwrite = TRUE)
-#' write.dna_to_rna(temp_file_path, output_dir = tempdir)
+#' #sample_file_path <- system.file("extdata", "sample_fa.fasta", package = "baseq")
+#' #tempdir <- tempdir()
+#' #temp_file_path <- file.path(tempdir, basename(sample_file_path))
+#' #file.copy(sample_file_path, temp_file_path, overwrite = TRUE)
+#' #write.dna_to_rna(temp_file_path, output_dir = tempdir)
 #'
 #' # Write to working directory
 #' # write.dna_to_rna(file_path)

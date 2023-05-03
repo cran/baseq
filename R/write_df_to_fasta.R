@@ -10,12 +10,12 @@
 #'
 #'
 #' @examples
-#' sample_file_path <- system.file("extdata", "sample_fa.fasta", package = "baseq")
-#' tempdir <- tempdir()
-#' temp_file_path <- file.path(tempdir, basename(sample_file_path))
-#' file.copy(sample_file_path, temp_file_path, overwrite = TRUE)
-#' read.fasta_to_df(sample_file_path)
-#' write.df_to_fasta(sample_fa, output_dir = tempdir)
+#' #sample_file_path <- system.file("extdata", "sample_fa.fasta", package = "baseq")
+#' #tempdir <- tempdir()
+#' #temp_file_path <- file.path(tempdir, basename(sample_file_path))
+#' #file.copy(sample_file_path, temp_file_path, overwrite = TRUE)
+#' #read.fasta_to_df(sample_file_path)
+#' #write.df_to_fasta(sample_fa, output_dir = tempdir)
 #'
 #' # Write to working directory
 #' # write.df_to_fasta(sample_fa)

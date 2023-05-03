@@ -19,9 +19,11 @@ Header and Sequence. The dataframe is then assigned to the environment with the
 name same as the fasta file name but without the .fasta extension.
 }
 \examples{
+\donttest{
+# Read in sequences from a FASTA file
 
 sample_file_path <- system.file("extdata", "sample_fa.fasta", package = "baseq")
-
 read.fasta_to_df(sample_file_path)
+}
 
 }

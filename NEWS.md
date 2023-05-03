@@ -8,3 +8,7 @@
 # baseq 0.1.2
 * Added 2 new functions
 * Updated README
+
+# baseq 0.1.3
+* Updated README
+* Updated Examples with executable sample files

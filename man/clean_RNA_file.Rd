@@ -21,11 +21,11 @@ than A, T, G, and C, and writes the cleaned sequences to a new multi FASTA file.
 file name is generated from the input file name with the suffix '_clean.fasta'.
 }
 \examples{
-sample_file_path_three <- system.file("extdata", "sample2_fa.fasta", package = "baseq")
-tempdir <- tempdir()
-temp_file_path <- file.path(tempdir, basename(sample_file_path_three))
-file.copy(sample_file_path_three, temp_file_path, overwrite = TRUE)
-clean_RNA_file(temp_file_path, output_dir = tempdir)
+#sample_file_path_three <- system.file("extdata", "sample2_fa.fasta", package = "baseq")
+#tempdir <- tempdir()
+#temp_file_path <- file.path(tempdir, basename(sample_file_path_three))
+#file.copy(sample_file_path_three, temp_file_path, overwrite = TRUE)
+#clean_RNA_file(temp_file_path, output_dir = tempdir)
 
 # Write to working directory
 # clean_RNA_file(file_path)

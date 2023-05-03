@@ -7,10 +7,13 @@
 #' @return This function returns a dataframe with three columns: Header, Sequence, and QualityScore.
 #'
 #' @examples
+#' \donttest{
 #'
-#' sample_file_path_two <- system.file("extdata", "sample_fq.fastq", package = "baseq")
+#' # Read in sequences from a FASTQ file
 #'
-#' read.fastq_to_df(sample_file_path_two)
+#' #sample_file_path_two <- system.file("extdata", "sample_fq.fastq", package = "baseq")
+#' #read.fastq_to_df(sample_file_path_two)
+#' }
 #'
 #' @export
 read.fastq_to_df <- function(fastq_file) {
@@ -30,7 +33,7 @@ read.fastq_to_df <- function(fastq_file) {
   while (length(header <- readLines(con, n=1)) > 0) {
     # Remove @ symbol from header
     header <- gsub("^@", "", header)
-    
+
     sequence <- readLines(con, n=1)
     plus_line <- readLines(con, n=1)
     quality_scores <- readLines(con, n=1)

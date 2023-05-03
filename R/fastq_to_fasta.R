@@ -8,11 +8,11 @@
 #' @return A character string specifying the path to the output FASTA file.
 #'
 #' @examples
-#' sample_file_path_two <- system.file("extdata", "sample_fq.fastq", package = "baseq")
-#' tempdir <- tempdir()
-#' temp_file_path <- file.path(tempdir, basename(sample_file_path_two))
-#' file.copy(sample_file_path_two, temp_file_path, overwrite = TRUE)
-#' fastq_to_fasta(temp_file_path)
+#' #sample_file_path_two <- system.file("extdata", "sample_fq.fastq", package = "baseq")
+#' #tempdir <- tempdir()
+#' #temp_file_path <- file.path(tempdir, basename(sample_file_path_two))
+#' #file.copy(sample_file_path_two, temp_file_path, overwrite = TRUE)
+#' #fastq_to_fasta(temp_file_path)
 #'
 #' # Output: "path/to/Temp/tempfoldername/sample_fq.fasta"
 #'

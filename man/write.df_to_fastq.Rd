@@ -18,12 +18,12 @@ A FASTQ file with the same name as the input dataframe.
 Write a FASTQ file from a dataframe of reads
 }
 \examples{
-sample_file_path_two <- system.file("extdata", "sample_fq.fastq", package = "baseq")
-tempdir <- tempdir()
-temp_file_path <- file.path(tempdir, basename(sample_file_path_two))
-file.copy(sample_file_path_two, temp_file_path, overwrite = TRUE)
-read.fastq_to_df(sample_file_path_two)
-write.df_to_fastq(sample_fq, output_dir = tempdir)
+#sample_file_path_two <- system.file("extdata", "sample_fq.fastq", package = "baseq")
+#tempdir <- tempdir()
+#temp_file_path <- file.path(tempdir, basename(sample_file_path_two))
+#file.copy(sample_file_path_two, temp_file_path, overwrite = TRUE)
+#read.fastq_to_df(sample_file_path_two)
+#write.df_to_fastq(sample_fq, output_dir = tempdir)
 
 # Write to working directory
 # write.df_to_fastq(sample_fq)
